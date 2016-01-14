@@ -13,15 +13,16 @@ import Nimble
 let TestFileName = "excludes"
 let TestFileExtension = "yml"
 let DefaultExcludesFile = "/excludes.yml"
+let WrongExcludesFile = "wrongType.yl"
 
 class ExcludesFileReaderTests: QuickSpec {
     
     override func spec() {
         describe("Excludes File Reader") {
-            var fileManager : MockFileManager!
-            var excludesFileReader : ExcludesFileReader!
-            var testFilePath : String!
-            var analyzePath : String!
+            var fileManager: MockFileManager!
+            var excludesFileReader: ExcludesFileReader!
+            var testFilePath: String!
+            var analyzePath: String!
             
             beforeEach {
                 fileManager = MockFileManager()
@@ -49,8 +50,9 @@ class ExcludesFileReaderTests: QuickSpec {
             }
             
             it("should throw exception if file exists but is not of extension .yml") {
+                let wrongType = fileManager.testFile(TestFileName, fileType: "yl")
                 expect {
-                    try excludesFileReader.absolutePathsFromExcludesFile(DefaultExcludesFile, forAnalyzePath: analyzePath)
+                    try excludesFileReader.absolutePathsFromExcludesFile(wrongType, forAnalyzePath: analyzePath)
                     }.to(throwError())
             }
             
@@ -74,10 +76,9 @@ class ExcludesFileReaderTests: QuickSpec {
             }
             
             it("should return an array of absolute paths excluding files with ** prefix") {
-                let analyzePath = testFilePath.stringByReplacingOccurrencesOfString("/excludes.yml", withString: "")
-                let resultsArray = ["file.txt".formattedExcludePath(analyzePath), "path/to/file.txt".formattedExcludePath(analyzePath), "folder".formattedExcludePath(analyzePath), "path/to/folder".formattedExcludePath(analyzePath)]
+                let resultsArray = ["/root/project/folderTests/testfile.txt", "/root/project/folderTests/testfile2.txt", "/root/file.txt", "/root/path/to/file.txt", "/root/folder", "/root/path/to/folder"]
                 expect {
-                    try excludesFileReader.absolutePathsFromExcludesFile(testFilePath, forAnalyzePath: analyzePath)
+                    try excludesFileReader.absolutePathsFromExcludesFile(testFilePath, forAnalyzePath: "/root")
                     }.to(equal(resultsArray))
             }
             
@@ -95,6 +96,4 @@ class ExcludesFileReaderTests: QuickSpec {
             
         }
     }
-    
 }
-

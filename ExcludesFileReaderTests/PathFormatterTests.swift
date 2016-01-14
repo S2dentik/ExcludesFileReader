@@ -67,7 +67,6 @@ class PathFormatterTests: QuickSpec {
                 let testPath = "/path/to/something"
                 expect(testPath.lastComponentFromPath()).to(equal("something"))
             }
-            
         }
     }
 }

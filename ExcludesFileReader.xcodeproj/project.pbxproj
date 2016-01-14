@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B178F6471C45082E005325E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B178F6461C45082E005325E0 /* Constants.swift */; };
+		B178F6491C450D2D005325E0 /* Excludes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B178F6481C450D2D005325E0 /* Excludes.swift */; };
+		B178F64F1C454058005325E0 /* excludes.yl in Resources */ = {isa = PBXBuildFile; fileRef = B178F64D1C453FE5005325E0 /* excludes.yl */; };
 		B19924FC1BFE2B820034ECF3 /* ExcludesFileReader.h in Headers */ = {isa = PBXBuildFile; fileRef = B19924FB1BFE2B820034ECF3 /* ExcludesFileReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B19925031BFE2B820034ECF3 /* ExcludesFileReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19924F81BFE2B820034ECF3 /* ExcludesFileReader.framework */; };
 		B19925081BFE2B820034ECF3 /* ExcludesFileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19925071BFE2B820034ECF3 /* ExcludesFileReaderTests.swift */; };
@@ -49,6 +52,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		B178F6461C45082E005325E0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B178F6481C450D2D005325E0 /* Excludes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Excludes.swift; sourceTree = "<group>"; };
+		B178F64D1C453FE5005325E0 /* excludes.yl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = excludes.yl; sourceTree = "<group>"; };
 		B19924F81BFE2B820034ECF3 /* ExcludesFileReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExcludesFileReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B19924FB1BFE2B820034ECF3 /* ExcludesFileReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExcludesFileReader.h; sourceTree = "<group>"; };
 		B19924FD1BFE2B820034ECF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -114,6 +120,8 @@
 				B199251C1BFE2C790034ECF3 /* PathFormatter.swift */,
 				B199251E1BFE2CA80034ECF3 /* Exceptions.swift */,
 				B19925201BFE2CD40034ECF3 /* Extensions.swift */,
+				B178F6481C450D2D005325E0 /* Excludes.swift */,
+				B178F6461C45082E005325E0 /* Constants.swift */,
 				B19924FD1BFE2B820034ECF3 /* Info.plist */,
 			);
 			path = ExcludesFileReader;
@@ -154,6 +162,7 @@
 			children = (
 				B19925271BFE2E160034ECF3 /* emptyExcludes.yml */,
 				B19925281BFE2E160034ECF3 /* excludes.yml */,
+				B178F64D1C453FE5005325E0 /* excludes.yl */,
 			);
 			path = TestFiles;
 			sourceTree = "<group>";
@@ -215,7 +224,7 @@
 		B19924EF1BFE2B820034ECF3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = YOPESO;
 				TargetAttributes = {
@@ -259,6 +268,7 @@
 			files = (
 				B19925291BFE2E160034ECF3 /* emptyExcludes.yml in Resources */,
 				B199252A1BFE2E160034ECF3 /* excludes.yml in Resources */,
+				B178F64F1C454058005325E0 /* excludes.yl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +279,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B178F6471C45082E005325E0 /* Constants.swift in Sources */,
 				B199251B1BFE2C3A0034ECF3 /* ExcludesFileReader.swift in Sources */,
+				B178F6491C450D2D005325E0 /* Excludes.swift in Sources */,
 				B199251F1BFE2CA80034ECF3 /* Exceptions.swift in Sources */,
 				B199251D1BFE2C790034ECF3 /* PathFormatter.swift in Sources */,
 				B19925211BFE2CD40034ECF3 /* Extensions.swift in Sources */,
@@ -425,6 +437,7 @@
 		B19925101BFE2B820034ECF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -434,12 +447,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.ExcludesFileReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		B19925111BFE2B820034ECF3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

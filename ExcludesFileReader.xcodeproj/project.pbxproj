@@ -7,14 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A30BBAEB1DB5579C00FA987A /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A30BBAE91DB5579C00FA987A /* Nimble.framework */; };
+		A30BBAEC1DB5579C00FA987A /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A30BBAEA1DB5579C00FA987A /* Quick.framework */; };
+		A30BBAED1DB557A500FA987A /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A30BBAE91DB5579C00FA987A /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A30BBAEE1DB557A500FA987A /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = A30BBAEA1DB5579C00FA987A /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B178F6471C45082E005325E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B178F6461C45082E005325E0 /* Constants.swift */; };
 		B178F6491C450D2D005325E0 /* Excludes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B178F6481C450D2D005325E0 /* Excludes.swift */; };
 		B178F64F1C454058005325E0 /* excludes.yl in Resources */ = {isa = PBXBuildFile; fileRef = B178F64D1C453FE5005325E0 /* excludes.yl */; };
 		B19924FC1BFE2B820034ECF3 /* ExcludesFileReader.h in Headers */ = {isa = PBXBuildFile; fileRef = B19924FB1BFE2B820034ECF3 /* ExcludesFileReader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B19925031BFE2B820034ECF3 /* ExcludesFileReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19924F81BFE2B820034ECF3 /* ExcludesFileReader.framework */; };
 		B19925081BFE2B820034ECF3 /* ExcludesFileReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19925071BFE2B820034ECF3 /* ExcludesFileReaderTests.swift */; };
-		B19925181BFE2BEE0034ECF3 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19925161BFE2BEE0034ECF3 /* Nimble.framework */; };
-		B19925191BFE2BEE0034ECF3 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19925171BFE2BEE0034ECF3 /* Quick.framework */; };
 		B199251B1BFE2C3A0034ECF3 /* ExcludesFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B199251A1BFE2C3A0034ECF3 /* ExcludesFileReader.swift */; };
 		B199251D1BFE2C790034ECF3 /* PathFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B199251C1BFE2C790034ECF3 /* PathFormatter.swift */; };
 		B199251F1BFE2CA80034ECF3 /* Exceptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B199251E1BFE2CA80034ECF3 /* Exceptions.swift */; };
@@ -23,12 +25,10 @@
 		B19925251BFE2D9D0034ECF3 /* MockFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19925241BFE2D9D0034ECF3 /* MockFileManager.swift */; };
 		B19925291BFE2E160034ECF3 /* emptyExcludes.yml in Resources */ = {isa = PBXBuildFile; fileRef = B19925271BFE2E160034ECF3 /* emptyExcludes.yml */; };
 		B199252A1BFE2E160034ECF3 /* excludes.yml in Resources */ = {isa = PBXBuildFile; fileRef = B19925281BFE2E160034ECF3 /* excludes.yml */; };
-		B199252C1BFE2F6F0034ECF3 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B19925161BFE2BEE0034ECF3 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B199252D1BFE2F6F0034ECF3 /* Quick.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = B19925171BFE2BEE0034ECF3 /* Quick.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B19925041BFE2B820034ECF3 /* PBXContainerItemProxy */ = {
+		A30BBAEF1DB557D200FA987A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B19924EF1BFE2B820034ECF3 /* Project object */;
 			proxyType = 1;
@@ -44,14 +44,16 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B199252C1BFE2F6F0034ECF3 /* Nimble.framework in CopyFiles */,
-				B199252D1BFE2F6F0034ECF3 /* Quick.framework in CopyFiles */,
+				A30BBAED1DB557A500FA987A /* Nimble.framework in CopyFiles */,
+				A30BBAEE1DB557A500FA987A /* Quick.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A30BBAE91DB5579C00FA987A /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/Mac/Nimble.framework; sourceTree = SOURCE_ROOT; };
+		A30BBAEA1DB5579C00FA987A /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/Mac/Quick.framework; sourceTree = SOURCE_ROOT; };
 		B178F6461C45082E005325E0 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B178F6481C450D2D005325E0 /* Excludes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Excludes.swift; sourceTree = "<group>"; };
 		B178F64D1C453FE5005325E0 /* excludes.yl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = excludes.yl; sourceTree = "<group>"; };
@@ -61,8 +63,6 @@
 		B19925021BFE2B820034ECF3 /* ExcludesFileReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExcludesFileReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B19925071BFE2B820034ECF3 /* ExcludesFileReaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcludesFileReaderTests.swift; sourceTree = "<group>"; };
 		B19925091BFE2B820034ECF3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B19925161BFE2BEE0034ECF3 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Nimble.framework; sourceTree = "<group>"; };
-		B19925171BFE2BEE0034ECF3 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Quick.framework; sourceTree = "<group>"; };
 		B199251A1BFE2C3A0034ECF3 /* ExcludesFileReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExcludesFileReader.swift; sourceTree = "<group>"; };
 		B199251C1BFE2C790034ECF3 /* PathFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathFormatter.swift; sourceTree = "<group>"; };
 		B199251E1BFE2CA80034ECF3 /* Exceptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exceptions.swift; sourceTree = "<group>"; };
@@ -86,14 +86,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				B19925031BFE2B820034ECF3 /* ExcludesFileReader.framework in Frameworks */,
-				B19925181BFE2BEE0034ECF3 /* Nimble.framework in Frameworks */,
-				B19925191BFE2BEE0034ECF3 /* Quick.framework in Frameworks */,
+				A30BBAEB1DB5579C00FA987A /* Nimble.framework in Frameworks */,
+				A30BBAEC1DB5579C00FA987A /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A30BBAE21DB556A200FA987A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A30BBAE91DB5579C00FA987A /* Nimble.framework */,
+				A30BBAEA1DB5579C00FA987A /* Quick.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B19924EE1BFE2B820034ECF3 = {
 			isa = PBXGroup;
 			children = (
@@ -142,19 +151,10 @@
 		B19925141BFE2BEE0034ECF3 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
-				B19925151BFE2BEE0034ECF3 /* Frameworks */,
+				A30BBAE21DB556A200FA987A /* Frameworks */,
 				B19925261BFE2E010034ECF3 /* TestFiles */,
 			);
 			path = Externals;
-			sourceTree = "<group>";
-		};
-		B19925151BFE2BEE0034ECF3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B19925161BFE2BEE0034ECF3 /* Nimble.framework */,
-				B19925171BFE2BEE0034ECF3 /* Quick.framework */,
-			);
-			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		B19925261BFE2E010034ECF3 /* TestFiles */ = {
@@ -211,7 +211,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				B19925051BFE2B820034ECF3 /* PBXTargetDependency */,
+				A30BBAF01DB557D200FA987A /* PBXTargetDependency */,
 			);
 			name = ExcludesFileReaderTests;
 			productName = ExcludesFileReaderTests;
@@ -225,14 +225,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = YOPESO;
 				TargetAttributes = {
 					B19924F71BFE2B820034ECF3 = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 					};
 					B19925011BFE2B820034ECF3 = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -301,10 +303,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B19925051BFE2B820034ECF3 /* PBXTargetDependency */ = {
+		A30BBAF01DB557D200FA987A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B19924F71BFE2B820034ECF3 /* ExcludesFileReader */;
-			targetProxy = B19925041BFE2B820034ECF3 /* PBXContainerItemProxy */;
+			targetProxy = A30BBAEF1DB557D200FA987A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -322,8 +324,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -346,7 +350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -369,8 +373,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -387,9 +393,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -399,6 +406,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -412,6 +420,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -419,6 +428,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -431,6 +441,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.ExcludesFileReader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -441,13 +452,14 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ExcludesFileReaderTests/Externals/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = ExcludesFileReaderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.ExcludesFileReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -458,12 +470,13 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ExcludesFileReaderTests/Externals/Frameworks",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = ExcludesFileReaderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yopeso.ExcludesFileReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

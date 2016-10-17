@@ -13,50 +13,50 @@ typealias Path = String
 extension Path {
     
     func lastComponentFromPath() -> String {
-        let pathComponents = self.componentsSeparatedByString(DirectorySuffix.Slash.rawValue)
+        let pathComponents = self.components(separatedBy: DirectorySuffix.Slash.rawValue)
         return pathComponents.last!
     }
     
-    func absolutePath(analyzePath: String = NSFileManager.defaultManager().currentDirectoryPath) -> Path {
-        if self.hasPrefix(DirectorySuffix.TildeSymbol.rawValue) { return NSHomeDirectory() + self.stringByReplacingOccurrencesOfString(DirectorySuffix.TildeSymbol.rawValue, withString: String.Empty) }
+    func absolutePath(_ analyzePath: String = FileManager.default.currentDirectoryPath) -> Path {
+        if self.hasPrefix(DirectorySuffix.TildeSymbol.rawValue) { return NSHomeDirectory() + self.replacingOccurrences(of: DirectorySuffix.TildeSymbol.rawValue, with: String.Empty) }
         if self.hasPrefix(DirectorySuffix.Slash.rawValue) { return self }
         let concatenatedPaths = analyzePath + DirectorySuffix.Slash.rawValue + self
         
         return concatenatedPaths.editAbsolutePath()
     }
     
-    func formattedExcludePath(analyzePath: String = NSFileManager.defaultManager().currentDirectoryPath) -> Path {
+    func formattedExcludePath(_ analyzePath: String = FileManager.default.currentDirectoryPath) -> Path {
         if self.hasPrefix(DirectorySuffix.AnyCombination.rawValue) && self.hasSuffix(DirectorySuffix.AnyCombination.rawValue) { return self }
         if containsSymbolAsPrefixOrSuffix(DirectorySuffix.AnyCombination.rawValue) { return String.Empty }
         
         return self.absolutePath(analyzePath)
     }
     
-    private func containsSymbolAsPrefixOrSuffix(symbol: String) -> Bool {
+    fileprivate func containsSymbolAsPrefixOrSuffix(_ symbol: String) -> Bool {
         return (self.hasPrefix(symbol) && !self.hasSuffix(symbol)) || (!self.hasPrefix(symbol) && self.hasSuffix(symbol))
     }
     
-    private func editAbsolutePath() -> Path {
-        var pathComponents = self.componentsSeparatedByString(DirectorySuffix.Slash.rawValue)
+    fileprivate func editAbsolutePath() -> Path {
+        var pathComponents = self.components(separatedBy: DirectorySuffix.Slash.rawValue)
         editPathComponentsForDotShortcuts(&pathComponents)
         checkLastPathComponentsElement(&pathComponents)
         
-        return pathComponents.joinWithSeparator(DirectorySuffix.Slash.rawValue)
+        return pathComponents.joined(separator: DirectorySuffix.Slash.rawValue)
     }
     
-    private func editPathComponentsForDotShortcuts(inout pathComponents: [String]) {
-        for (index, element) in pathComponents.enumerate() {
+    fileprivate func editPathComponentsForDotShortcuts(_ pathComponents: inout [String]) {
+        for (index, element) in pathComponents.enumerated() {
             if element == DirectorySuffix.CurrentDirectorySymbol.rawValue {
-                pathComponents.removeAtIndex(index)
+                pathComponents.remove(at: index)
             }
             if element == DirectorySuffix.ParentDirectorySymbol.rawValue {
-                pathComponents.removeAtIndex(index)
-                pathComponents.removeAtIndex(index - 1)
+                pathComponents.remove(at: index)
+                pathComponents.remove(at: index - 1)
             }
         }
     }
     
-    private func checkLastPathComponentsElement(inout pathComponents: [String]) {
+    fileprivate func checkLastPathComponentsElement(_ pathComponents: inout [String]) {
         if [String.Empty, DirectorySuffix.RecursiveSymbol.rawValue].contains(pathComponents.last!) {
             pathComponents.removeLast()
         }
@@ -75,23 +75,23 @@ extension Path {
         
         if modifiedString.hasSuffix(DirectorySuffix.AnyCombination.rawValue) &&
             modifiedString.hasPrefix(DirectorySuffix.AnyCombination.rawValue) {
-                modifiedString = modifiedString.stringByReplacingOccurrencesOfString(DirectorySuffix.AnyCombination.rawValue, withString: String.Empty)
+                modifiedString = modifiedString.replacingOccurrences(of: DirectorySuffix.AnyCombination.rawValue, with: String.Empty)
         }
         
         return modifiedString
     }
     
-    func deleteSuffix(suffix: String) -> String {
+    func deleteSuffix(_ suffix: String) -> String {
         guard self.hasSuffix(suffix) else { return self }
         
-        return (self as NSString).substringToIndex(self.characters.count - suffix.characters.count)
+        return (self as NSString).substring(to: self.characters.count - suffix.characters.count)
     }
     
     func hasDirectory(named name: String) -> Bool {
-        return self.lowercaseString.rangeOfString(name.lowercaseString) != nil
+        return self.lowercased().range(of: name.lowercased()) != nil
     }
     
-    func containingAnyDirectories(directories: [Path]) -> Bool {
+    func containingAnyDirectories(_ directories: [Path]) -> Bool {
         for directoryName in directories {
             if self.hasDirectory(named: directoryName) {
                 return true
@@ -106,7 +106,7 @@ func +(lhs: [Path], rhs: Path) -> [Path] {
     return lhs + [rhs]
 }
 
-extension SequenceType where Generator.Element == Path {
+extension Sequence where Iterator.Element == Path {
     
     func deleteSuffixes() -> [Path] {
         return self.map { $0.deleteSuffixes() }

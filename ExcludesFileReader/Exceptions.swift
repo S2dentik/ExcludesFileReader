@@ -6,12 +6,12 @@
 //  Copyright © 2015 YOPESO. All rights reserved.
 //
 
-public enum CommandLineError: ErrorType {
-    case InvalidOption(String)
-    case AbuseOfOptions(String)
-    case InvalidExclude(String)
-    case InvalidArguments(String)
-    case ExcludesFileError(String)
-    case CannotReadFromHelpFile
-    case InvalidInformationalOption(String)
+public enum CommandLineError: Error {
+    case invalidOption(String)
+    case abuseOfOptions(String)
+    case invalidExclude(String)
+    case invalidArguments(String)
+    case excludesFileError(String)
+    case cannotReadFromHelpFile
+    case invalidInformationalOption(String)
 }

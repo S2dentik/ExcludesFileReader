@@ -9,15 +9,15 @@
 import Foundation
 @testable import ExcludesFileReader
 
-class MockFileManager: NSFileManager {
+class MockFileManager: FileManager {
     
-    func testFile(fileName: String, fileType: String) -> String {
-        let testBundle = NSBundle(forClass: self.dynamicType)
+    func testFile(_ fileName: String, fileType: String) -> String {
+        let testBundle = Bundle(for: type(of: self))
         
-        return testBundle.pathForResource(fileName, ofType: fileType)!
+        return testBundle.path(forResource: fileName, ofType: fileType)!
     }
     
-    override func subpathsOfDirectoryAtPath(path: String) throws -> [String] {
+    override func subpathsOfDirectory(atPath path: String) throws -> [String] {
         if path == "/root" {
             return ["project/file1.txt",
                     "project/file2.txt",
@@ -29,6 +29,6 @@ class MockFileManager: NSFileManager {
                     "project/file.txt"]
         }
         
-        throw CommandLineError.CannotReadFromHelpFile
+        throw CommandLineError.cannotReadFromHelpFile
     }
 }

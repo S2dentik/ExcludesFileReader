@@ -28,7 +28,7 @@ class ExcludesFileReaderTests: QuickSpec {
                 fileManager = MockFileManager()
                 excludesFileReader = ExcludesFileReader(fileManager:fileManager)
                 testFilePath = fileManager.testFile(TestFileName, fileType: TestFileExtension)
-                analyzePath = testFilePath.stringByReplacingOccurrencesOfString(DefaultExcludesFile, withString: "")
+                analyzePath = testFilePath.replacingOccurrences(of: DefaultExcludesFile, with: "")
             }
             
             afterEach {
@@ -40,7 +40,7 @@ class ExcludesFileReaderTests: QuickSpec {
             it("should throw exception if file does not exists at path") {
                 expect {
                     try excludesFileReader.absolutePathsFromExcludesFile(DefaultExcludesFile, forAnalyzePath: analyzePath)
-                    }.to(throwError(CommandLineError.ExcludesFileError("")))
+                    }.to(throwError(CommandLineError.excludesFileError("")))
             }
             
             it("should throw exception if file exists but it is directory") {

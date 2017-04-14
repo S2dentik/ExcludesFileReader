@@ -10,15 +10,12 @@ import Cocoa
 
 final public class ExcludesFileReader {
     let fileManager: FileManager
-    let ExcludesFileExtension = ".yml"
-    let StartPathSymbol: Character = "“"
-    let EndPathSymbol: Character = "”"
-    let PossibleStartAndEndSymbol: Character = "\""
-    
-    public init(fileManager: FileManager = FileManager.default) {
+    let excludesFileExtension = "." + .yml
+
+    public init(fileManager: FileManager = .default) {
         self.fileManager = fileManager
     }
-    
+
     public func absolutePathsFromExcludesFile(_ excludesFilePath: String, forAnalyzePath analyzePath: String) throws -> [String] {
         do {
             try validateExcludesFilePath(excludesFilePath)
@@ -36,34 +33,32 @@ final public class ExcludesFileReader {
             throw CommandLineError.excludesFileError("\nCan't read from indicated excludes file")
         }
     }
-    
+
     fileprivate func validateExcludesFilePath(_ path: Path) throws {
         guard fileManager.fileExists(atPath: path) else {
             throw CommandLineError.excludesFileError("\nIndicated excludes file does not exist")
         }
         if fileManager.isDirectory(path) { throw CommandLineError.excludesFileError("\nDirectory was indicated as excludes file") }
-        guard path.hasSuffix(ExcludesFileExtension) else {
+        guard path.hasSuffix(excludesFileExtension) else {
             throw CommandLineError.excludesFileError("\nExcludes file must have .yml extension")
         }
     }
-    
+
     fileprivate func excludesFromContentsOfFile(_ contents: String, analyzePath: String) -> Excludes {
         let paths = contents.lines.map { $0.firstQuotedSubstring }
             .filter { !$0.isIgnoredType }
             .reduce([String]()) { $0 + $1.formattedExcludePath(analyzePath) }
-        
+
         return Excludes(paths: paths)
     }
-    
+
     fileprivate func excludesPathsWhereContainsRelativeNames(_ rootPath: Path, relativePaths: [Path]) -> [Path] {
         let paths = subpathsOfDirectoryAtPath(rootPath)
-        
-        return paths.filter { $0.containingAnyDirectories(relativePaths) }.map { $0.absolutePath(rootPath) }
+
+        return paths.filter { $0.containsAnyDirectoryFrom(relativePaths) }.map { $0.absolutePath(rootPath) }
     }
-    
+
     fileprivate func subpathsOfDirectoryAtPath(_ path: String) -> [Path] {
-        do {
-            return try fileManager.subpathsOfDirectory(atPath: path)
-        } catch _ { return [] }
+        return (try? fileManager.subpathsOfDirectory(atPath: path)) ?? []
     }
 }

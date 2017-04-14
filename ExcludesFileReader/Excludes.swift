@@ -12,16 +12,18 @@ final class Excludes {
     let excludePaths: [Path]
     
     lazy var absolutePaths: [Path] = {
-        return self.excludePaths.filter { $0.hasPrefix(DirectorySuffix.Slash.rawValue) }
+        return self.excludePaths.filter { $0.hasPrefix(.slash) }
     }()
     
     lazy var relativePaths: [String] = {
-        return self.excludePaths.filter { !$0.hasPrefix(DirectorySuffix.Slash.rawValue) &&
-            !$0.hasSuffix(DirectorySuffix.AnyCombination.rawValue) &&
-            !$0.hasPrefix(DirectorySuffix.AnyCombination.rawValue)}
+        return self.excludePaths.filter {
+            !$0.hasPrefix(.slash) &&
+            !$0.hasSuffix(.anyCombination) &&
+            !$0.hasPrefix(.anyCombination)
+        }
     }()
     
     init(paths: [Path]) {
-        self.excludePaths = paths.deleteSuffixes()
+        self.excludePaths = paths.deletingSuffixes()
     }
 }

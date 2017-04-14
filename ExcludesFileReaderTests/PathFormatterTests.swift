@@ -65,7 +65,7 @@ class PathFormatterTests: QuickSpec {
             
             it("should return last component from path") {
                 let testPath = "/path/to/something"
-                expect(testPath.lastComponentFromPath()).to(equal("something"))
+                expect(URL(string: testPath)?.lastPathComponent).to(equal("something"))
             }
         }
     }

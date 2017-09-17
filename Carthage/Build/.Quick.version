@@ -1,9 +1,8 @@
 {
-  "xcodeVersion" : "Xcode 8.3.1\nBuild version 8E1000a",
-  "commitish" : "v0.10.0",
+  "commitish" : "3665ae9570b682a562df847cccbb46811864676a",
   "Mac" : [
     {
-      "hash" : "7233230cf33f87aab1b3f1be727a6b767ee7d9cdd2c42c4952a84faf1e62a79b",
+      "hash" : "b4f99d643ddbf61e0292e193bb6821d70c83275e33cdceb3f7cabe41b47cc312",
       "name" : "Quick"
     }
   ]

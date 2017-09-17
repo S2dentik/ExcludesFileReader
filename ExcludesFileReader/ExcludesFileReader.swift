@@ -45,7 +45,7 @@ final public class ExcludesFileReader {
     }
 
     fileprivate func excludesFromContentsOfFile(_ contents: String, analyzePath: String) -> Excludes {
-        let paths = contents.lines.map { $0.firstQuotedSubstring }
+        let paths = contents.lines.flatMap { $0.excludePath }
             .filter { !$0.isIgnoredType }
             .reduce([String]()) { $0 + $1.formattedExcludePath(analyzePath) }
 

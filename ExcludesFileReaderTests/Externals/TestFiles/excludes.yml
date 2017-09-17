@@ -3,5 +3,7 @@
 - “folder/*”   
 - “path/to/folder/*”
 - ".*Tests.*"
+- 'FileBetweenSingleQuotes'
+- NoQuotes.swift
 
 - “**.h”

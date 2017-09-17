@@ -28,14 +28,19 @@ extension String {
         return self as NSString
     }
 
-    var firstQuotedSubstring: String {
-        do {
-            let regex = try NSRegularExpression(pattern: "“([^”]*)”|\"([^\"]*)\"", options: [])
-            let range = regex.rangeOfFirstMatch(in: self, options: [], range: NSRange(location: 0, length: characters.count))
-            guard range.length > 2 else { return .empty }
-            return NSString.substring(with: NSRange(location: range.location + 1, length: range.length - 2))
-        } catch _ {
-            return .empty
-        }
+    var excludePath: String? {
+        let rawExcludePath = String(dropFirst().trimmingCharacters(in: .whitespacesAndNewlines))
+        return rawExcludePath.substringBetween("“", "”")
+            ?? rawExcludePath.substringBetween("\"", "\"")
+            ?? rawExcludePath.substringBetween("'", "'")
+            ?? rawExcludePath
+    }
+
+    func substringBetween(_ prefix: String, _ suffix: String) -> String? {
+        return isSurroundedBy(prefix, suffix) ? String(dropFirst().dropLast()) : nil
+    }
+
+    func isSurroundedBy(_ prefix: String, _ suffix: String) -> Bool {
+        return hasPrefix(prefix) && hasSuffix(suffix)
     }
 }

@@ -76,7 +76,16 @@ class ExcludesFileReaderTests: QuickSpec {
             }
             
             it("should return an array of absolute paths excluding files with ** prefix") {
-                let resultsArray = ["/root/project/folderTests/testfile.txt", "/root/project/folderTests/testfile2.txt", "/root/file.txt", "/root/path/to/file.txt", "/root/folder", "/root/path/to/folder"]
+                let resultsArray = [
+                    "/root/project/folderTests/testfile.txt",
+                    "/root/project/folderTests/testfile2.txt",
+                    "/root/file.txt",
+                    "/root/path/to/file.txt",
+                    "/root/folder",
+                    "/root/path/to/folder",
+                    "/root/FileBetweenSingleQuotes",
+                    "/root/NoQuotes.swift"
+                    ]
                 expect {
                     try excludesFileReader.absolutePathsFromExcludesFile(testFilePath, forAnalyzePath: "/root")
                     }.to(equal(resultsArray))

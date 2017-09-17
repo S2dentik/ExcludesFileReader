@@ -19,7 +19,7 @@ extension Path {
     }
 
     func absolutePath(_ path: String = currentDirectoryPath) -> Path {
-        if hasPrefix(.tilde) { return NSHomeDirectory() + replacingOccurrences(of: .tilde, with: .empty) }
+        if hasPrefix(.tilde) { return NSHomeDirectory() + replacingOccurrences(of: String.tilde, with: String.empty) }
         if hasPrefix(.slash) { return self }
         let concatenatedPath = path + .slash + self
 
@@ -38,7 +38,7 @@ extension Path {
     }
 
     fileprivate func polish() -> Path {
-        var pathComponents = components(separatedBy: .slash)
+        var pathComponents = components(separatedBy: String.slash)
         pathComponents.enumerated().map { index, element -> [Int] in
             if element == .currentDirectory { return [index] }
             if element == .parentDirectory { return [index, index - 1] }
@@ -53,7 +53,7 @@ extension Path {
         let path = deletingSuffix(.allFiles).deletingSuffix(.slash)
 
         if path.hasSuffix(.anyCombination) && path.hasPrefix(.anyCombination) {
-            return path.replacingOccurrences(of: .anyCombination, with: .empty)
+            return path.replacingOccurrences(of: String.anyCombination, with: String.empty)
         }
 
         return path
@@ -66,7 +66,7 @@ extension Path {
     func deletingSuffix(_ suffix: String) -> String {
         guard hasSuffix(suffix) else { return self }
 
-        return substring(to: index(endIndex, offsetBy: -suffix.characters.count))
+        return String(self[startIndex..<index(endIndex, offsetBy: -suffix.characters.count)])
     }
 
     func hasDirectory(named name: String) -> Bool {

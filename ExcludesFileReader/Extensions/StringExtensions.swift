@@ -30,17 +30,28 @@ extension String {
 
     var excludePath: String? {
         let rawExcludePath = String(dropFirst().trimmingCharacters(in: .whitespacesAndNewlines))
-        return rawExcludePath.substringBetween("“", "”")
-            ?? rawExcludePath.substringBetween("\"", "\"")
-            ?? rawExcludePath.substringBetween("'", "'")
-            ?? rawExcludePath
+        let delimiters: [(start: String, end: String)] = [("“", "”"), ("\"", "\""), ("'", "'"), ("", "")]
+        for (start, end) in delimiters {
+            if rawExcludePath.hasPrefix(start) { return rawExcludePath.substringBetween(start, end) }
+        }
+        return nil
     }
 
     func substringBetween(_ prefix: String, _ suffix: String) -> String? {
-        return isSurroundedBy(prefix, suffix) ? String(dropFirst().dropLast()) : nil
+        guard isSurroundedBy(prefix, suffix) else { return nil }
+        let reversedWithoutPrefix = String(removingSubrange(startIndex..<prefix.endIndex).reversed())
+
+        return String(reversedWithoutPrefix.removingSubrange(startIndex..<suffix.endIndex).reversed())
     }
 
     func isSurroundedBy(_ prefix: String, _ suffix: String) -> Bool {
         return hasPrefix(prefix) && hasSuffix(suffix)
+    }
+
+    func removingSubrange(_ bounds: Range<String.Index>) -> String {
+        var melf = self
+        melf.removeSubrange(bounds)
+
+        return melf
     }
 }

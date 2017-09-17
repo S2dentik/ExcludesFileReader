@@ -7,3 +7,10 @@
 - NoQuotes.swift
 
 - “**.h”
+
+- "WrongPath1/*'
+- "WrongPath2/*”
+- 'WrongPath3/*"
+- 'WrongPath4/*
+- “WrongPath5/*'
+- “WrongPath7/*"
